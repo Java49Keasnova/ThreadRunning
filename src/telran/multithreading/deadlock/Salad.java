@@ -3,8 +3,8 @@ package telran.multithreading.deadlock;
 public class Salad extends Thread {
 
     public String chiefsName;
-    public static Object vegetable = new Object();
-    public static Object knife = new Object();
+    public final static Object vegetable = new Object();
+    public final static Object knife = new Object();
 
 
     public Salad(String chiefsName) {
