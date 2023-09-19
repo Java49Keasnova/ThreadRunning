@@ -1,12 +1,31 @@
 package telran.multithreading.games;
 
-import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public record Race(int distance, int minSleep, int maxSleep) {
-    private static Map<Integer, Long> tableRes = Collections.synchronizedMap(new LinkedHashMap<>());
-
-    public  Map<Integer, Long> getTable() {
-        return tableRes;
+public class Race {
+    private int distance;
+    private int minSleep;
+    private int maxSleep;
+    private AtomicInteger winner = new AtomicInteger(0);
+    public Race(int distance, int minSleep, int maxSleep) {
+        this.distance = distance;
+        this.minSleep = minSleep;
+        this.maxSleep = maxSleep;
+    }
+    public int getWinner() {
+        return winner.get();
+    }
+    public void setWinner(int winner) {
+       this.winner.compareAndSet(0, winner);
+    }
+    public int getDistance() {
+        return distance;
+    }
+    public int getMinSleep() {
+        return minSleep;
+    }
+    public int getMaxSleep() {
+        return maxSleep;
     }
 
 }

@@ -1,6 +1,5 @@
 package telran.multithreading.games;
 
-import java.util.Map;
 import java.util.stream.IntStream;
 
 import telran.view.*;
@@ -40,12 +39,8 @@ public class RaceAppl {
     }
 
     private static void displayWinner(Race race) {
-        System.out.println("please  raiser number  time");
-        Map<Integer, Long> table = race.getTable();
-         int i = 1;
-         for (Map.Entry<Integer, Long> entry : table.entrySet()){
-                System.out.printf(" %3d %9d %11d\n", i++, entry.getKey(), entry.getValue());
-        }
+        System.out.println("Congratulations to runner " + race.getWinner());
+
     }
 
     private static void joinRunners(Runner[] runners) {
